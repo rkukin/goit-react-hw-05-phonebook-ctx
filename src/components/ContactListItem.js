@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types"
 import styled from "styled-components";
+import withTheme from "../hoc/withTheme";
 
 const ListItem = styled.li`
 margin-right: 30px;
 min-width: 50%;
+
+${'' /* color: ${props.theme.config.fontColor} */}
 `;
 
 const DeleteButton = styled.button`
@@ -18,8 +21,7 @@ margin-bottom: 10px;
 `;
 
 
-export default function ContactListItem({handleDelete, contact: {id, name, number}}) {
-
+function ContactListItem({ handleDelete, contact: { id, name, number } }) {
   return (
     <ContactListItemWrapper>
       <ListItem key={id}>{name}: {number} </ListItem>
@@ -36,3 +38,5 @@ ContactListItem.propTypes = {
     number: PropTypes.string.isRequired
   }).isRequired
 };
+
+export default withTheme(ContactListItem)
