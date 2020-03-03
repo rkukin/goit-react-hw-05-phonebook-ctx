@@ -4,7 +4,7 @@ import styled from "styled-components";
 import withTheme from "../hoc/withTheme"
 
 const ContactsForm = styled.form`
-border: 2px solid black;
+border: 2px solid ${props => props.fontColor};
 max-width: 400px;
 padding: 10px;
 display: flex;
@@ -14,6 +14,7 @@ flex-direction: column;
 const InputLabel = styled.label`
 max-width: 40%;
 font-size: 20px;
+color: ${props => props.bodybg}
 `;
 
 const FormInput = styled.input`
@@ -49,8 +50,8 @@ class AddContactForm extends Component {
 
   render() {
     return (
-      <ContactsForm onSubmit={this.handleSubmit}>
-        <InputLabel htmlFor="name">Name</InputLabel>
+      <ContactsForm props={this.props.theme.config} onSubmit={this.handleSubmit}>
+        <InputLabel props={this.props.theme.config} htmlFor="name">Name</InputLabel>
         <FormInput type="text" name="name" id="name" value={this.state.name} autoComplete='off'
           onChange={this.handleChange} />
 

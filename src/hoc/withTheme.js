@@ -5,7 +5,7 @@ const withTheme = WrappedComponent => {
     return function WithTheme(props) {
         return (
             <ThemeContext.Consumer>
-                {theme => <WrappedComponent {...props} styles={{ color: theme.config.fontColor, background: theme.config.bodybg }} />}
+                {theme => <WrappedComponent {...props} theme={theme} />}
             </ThemeContext.Consumer>
         );
     };
