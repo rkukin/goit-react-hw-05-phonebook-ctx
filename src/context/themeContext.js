@@ -2,12 +2,12 @@ import React from 'react';
 
 export const themeConfig = {
     light: {
-        fontColor: 'blue',
-        bodybg: 'red'
+        fontColor: 'black',
+        bodybg: 'white'
     },
     dark: {
-        fontColor: 'red',
-        bodybg: 'blue'
+        fontColor: 'white',
+        bodybg: 'black'
     }
 };
 

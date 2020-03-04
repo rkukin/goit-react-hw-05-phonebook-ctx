@@ -4,28 +4,33 @@ import styled from "styled-components";
 import withTheme from "../hoc/withTheme"
 
 const ContactsForm = styled.form`
-border: 2px solid ${props => props.fontColor};
+border: 2px solid ${props => props.themeProps.fontColor};
 max-width: 400px;
 padding: 10px;
 display: flex;
 flex-direction: column;
+background-color: ${props => props.themeProps.bodybg};
 `;
 
 const InputLabel = styled.label`
 max-width: 40%;
 font-size: 20px;
-color: ${props => props.bodybg}
+color: ${props => props.themeProps.fontColor}
 `;
 
 const FormInput = styled.input`
 max-width: 40%;
 margin-top: 10px;
 margin-bottom: 30px;
+color: ${props => props.themeProps.fontColor};
+background-color: ${props => props.themeProps.bodybg};
 `;
 
 const SubmitButton = styled.button`
 max-width: 30%;
 border-radius: 5px;
+color: ${props => props.themeProps.fontColor};
+background-color: ${props => props.themeProps.bodybg};
 `;
 
 class AddContactForm extends Component {
@@ -49,17 +54,20 @@ class AddContactForm extends Component {
   };
 
   render() {
+
+    const {config} = this.props.theme;
+
     return (
-      <ContactsForm props={this.props.theme.config} onSubmit={this.handleSubmit}>
-        <InputLabel props={this.props.theme.config} htmlFor="name">Name</InputLabel>
-        <FormInput type="text" name="name" id="name" value={this.state.name} autoComplete='off'
+      <ContactsForm themeProps={config} onSubmit={this.handleSubmit}>
+        <InputLabel themeProps={config} htmlFor="name">Name</InputLabel>
+        <FormInput themeProps={config} type="text" name="name" id="name" value={this.state.name} autoComplete='off'
           onChange={this.handleChange} />
 
-        <InputLabel htmlFor="number">Number</InputLabel>
-        <FormInput type="tel" name="number" id="number" value={this.state.number} autoComplete='off'
+        <InputLabel themeProps={config} htmlFor="number">Number</InputLabel>
+        <FormInput themeProps={config} type="tel" name="number" id="number" value={this.state.number} autoComplete='off'
           onChange={this.handleChange} />
 
-        <SubmitButton type="submit">Add contact</SubmitButton>
+        <SubmitButton themeProps={config} type="submit">Add contact</SubmitButton>
       </ContactsForm>
     )
   }
