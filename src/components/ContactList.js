@@ -10,12 +10,12 @@ display: flex;
 flex-direction: column;
 `;
 
-function ContactList({ contacts, handleDelete }) {
+function ContactList({contacts, handleDelete}) {
 
   return (
     <List>
       {contacts.map(contact => {
-        return <ContactListItem key={contact.id} contact={contact} handleDelete={handleDelete} />
+        return <ContactListItem key={contact.id} contact={contact} handleDelete={handleDelete}/>
       })}
     </List>
   )

@@ -6,11 +6,14 @@ import withTheme from "../hoc/withTheme";
 const ListItem = styled.li`
 margin-right: 30px;
 min-width: 50%;
+
 `;
 
 const DeleteButton = styled.button`
 max-width: 50%;
 border-radius: 5px;
+color: ${props => props.themeProps.fontColor};
+background-color: ${props => props.themeProps.bodybg};
 `;
 
 const ContactListItemWrapper = styled.div`
@@ -19,11 +22,12 @@ margin-bottom: 10px;
 `;
 
 
-function ContactListItem({ handleDelete, contact: { id, name, number } }) {
+function ContactListItem({handleDelete, contact: {id, name, number}, theme}) {
+
   return (
     <ContactListItemWrapper>
       <ListItem key={id}>{name}: {number} </ListItem>
-      <DeleteButton onClick={() => handleDelete(id)}>Delete</DeleteButton>
+      <DeleteButton themeProps={theme.config} onClick={() => handleDelete(id)}>Delete</DeleteButton>
     </ContactListItemWrapper>
   )
 }

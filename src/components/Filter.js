@@ -7,12 +7,14 @@ const FilterInput = styled.input`
 max-width: 40%;
 margin-top: 10px;
 margin-bottom: 30px;
+color: ${props => props.themeProps.fontColor};
+background-color: ${props => props.themeProps.bodybg};
 `;
 
-function Filter({ handleChange }) {
+function Filter({handleChange, theme}) {
 
   return (
-    <FilterInput type="text" onChange={handleChange} name="filter" autoComplete='off' />
+    <FilterInput themeProps={theme.config} type="text" onChange={handleChange} name="filter" autoComplete='off'/>
   )
 }
 

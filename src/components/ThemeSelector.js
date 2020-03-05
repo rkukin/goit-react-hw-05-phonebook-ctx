@@ -1,21 +1,25 @@
-
 import React from "react";
-import ThemeContext from "../context/themeContext";
 import styled from "styled-components";
+import "react-toggle/style.css";
+import Toggle from 'react-toggle';
+import withTheme from "../hoc/withTheme";
 
-export default function ThemeSelector({ toggleTheme }) {
-    return (
-        <ThemeContext.Consumer>
-            {theme => (
-                <div>
-                    <span>{theme.type}</span>
-                    <input
-                        type="checkbox"
-                        checked={theme.type === "dark"}
-                        onChange={() => toggleTheme()}
-                    />
-                </div>
-            )}
-        </ThemeContext.Consumer>
-    );
+const ToggleLabel = styled.span`
+margin: 10px;
+`;
+
+function ThemeSelector({toggleTheme, theme}) {
+  return (
+    <label>
+      <ToggleLabel>{theme.type}</ToggleLabel>
+      <Toggle
+        type="checkbox"
+        checked={theme.type === "dark"}
+        onChange={() => toggleTheme()}
+      />
+    </label>
+
+  );
 }
+
+export default withTheme(ThemeSelector)
