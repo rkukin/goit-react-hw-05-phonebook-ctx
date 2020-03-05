@@ -4,7 +4,7 @@ import withTheme from "../hoc/withTheme";
 
 const Wrapper = styled.div`
 margin: 0;
-padding: 0;
+padding: 10px;
 color: ${props => props.themeProps.fontColor};
 background-color: ${props => props.themeProps.bodybg};
 `;
