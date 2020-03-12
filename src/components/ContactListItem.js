@@ -27,7 +27,7 @@ function ContactListItem({handleDelete, contact: {id, name, number}, theme}) {
   return (
     <ContactListItemWrapper>
       <ListItem key={id}>{name}: {number} </ListItem>
-      <DeleteButton themeProps={theme.config} onClick={() => handleDelete(id)}>Delete</DeleteButton>
+      <DeleteButton themeProps={theme.config[theme.type]} onClick={() => handleDelete(id)}>Delete</DeleteButton>
     </ContactListItemWrapper>
   )
 }

@@ -12,7 +12,7 @@ background-color: ${props => props.themeProps.bodybg};
 function Container({children, theme}) {
 
   return (
-    <Wrapper themeProps={theme.config}>
+    <Wrapper themeProps={theme.config[theme.type]}>
       {children}
     </Wrapper>
   )

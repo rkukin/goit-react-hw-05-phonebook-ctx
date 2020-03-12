@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { Component } from "react";
 
-export const themeConfig = {
+const themeConfig = {
     light: {
-        fontColor: 'black',
-        bodybg: 'white'
+        fontColor: "black",
+        bodybg: "#fff"
     },
     dark: {
-        fontColor: 'white',
-        bodybg: 'black'
+        fontColor: "white",
+        bodybg: "#333333"
     }
 };
 
-const ThemeContext = React.createContext(themeConfig.light);
-export default ThemeContext;
+const Context = React.createContext();
+
+export default class ThemeContext extends Component {
+    static Consumer = Context.Consumer;
+
+    toggleTheme = () => {
+        this.setState(state => ({
+            type: state.type === "dark" ? "light" : "dark"
+        }));
+    };
+
+    state = {
+        type: "light",
+        toggleTheme: this.toggleTheme,
+        config: themeConfig
+    };
+
+    render() {
+        return (
+          <Context.Provider value={this.state}>
+              {this.props.children}
+          </Context.Provider>
+        );
+    }
+}

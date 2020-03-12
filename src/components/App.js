@@ -4,16 +4,14 @@ import AddContactForm from "./AddContactForm";
 import ContactList from "./ContactList";
 import Filter from "./Filter";
 import ThemeSelector from "./ThemeSelector";
-import ThemeContext from "../context/themeContext";
-import {themeConfig} from "../context/themeContext";
 import Container from "./Container";
+import withTheme from "../hoc/withTheme";
 
-export default class App extends Component {
+class App extends Component {
 
   state = {
     contacts: [],
-    filter: '',
-    theme: 'light'
+    filter: ''
   };
 
   getFilteredContacts() {
@@ -73,31 +71,19 @@ export default class App extends Component {
       localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
   };
 
-  toggleTheme = () => {
-    this.setState({
-      theme: this.state.theme === "dark" ? "light" : "dark"
-    });
-  };
-
   render() {
     return (
 
-      <ThemeContext.Provider
-        value={{
-          type: this.state.theme,
-          config: themeConfig[this.state.theme]
-        }}
-      >
-        <Container>
-          <ThemeSelector toggleTheme={this.toggleTheme}/>
-          <h2>PhoneBook</h2>
-          <AddContactForm onAddContact={this.onAddContact}/>
-          <h3>Contacts</h3>
-          <Filter handleChange={this.handleChange}/>
-          <ContactList contacts={this.getFilteredContacts()} handleDelete={this.handleDelete}/>
-        </Container>
-      </ThemeContext.Provider>
-
+      <Container>
+        <ThemeSelector/>
+        <h2>PhoneBook</h2>
+        <AddContactForm onAddContact={this.onAddContact}/>
+        <h3>Contacts</h3>
+        <Filter handleChange={this.handleChange}/>
+        <ContactList contacts={this.getFilteredContacts()} handleDelete={this.handleDelete}/>
+      </Container>
     )
   }
 }
+
+export default withTheme(App);

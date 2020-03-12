@@ -8,14 +8,15 @@ const ToggleLabel = styled.span`
 margin: 10px;
 `;
 
-function ThemeSelector({toggleTheme, theme}) {
+function ThemeSelector(themeProps) {
+
   return (
     <label>
-      <ToggleLabel>{theme.type}</ToggleLabel>
+      <ToggleLabel>{themeProps.theme.type}</ToggleLabel>
       <Toggle
         type="checkbox"
-        checked={theme.type === "dark"}
-        onChange={() => toggleTheme()}
+        checked={themeProps.theme.type === "dark"}
+        onChange={() => themeProps.theme.toggleTheme()}
       />
     </label>
 

@@ -55,7 +55,8 @@ class AddContactForm extends Component {
 
   render() {
 
-    const {config} = this.props.theme;
+    // const {config} = this.props.theme;
+    const config = this.props.theme.config[this.props.theme.type];
 
     return (
 

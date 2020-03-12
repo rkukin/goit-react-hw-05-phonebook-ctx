@@ -14,7 +14,7 @@ background-color: ${props => props.themeProps.bodybg};
 function Filter({handleChange, theme}) {
 
   return (
-    <FilterInput themeProps={theme.config} type="text" onChange={handleChange} name="filter" autoComplete='off'/>
+    <FilterInput themeProps={theme.config[theme.type]} type="text" onChange={handleChange} name="filter" autoComplete='off'/>
   )
 }
 
